@@ -1,0 +1,13 @@
+PORTFOLIO AUDIOVISUEL DE GAUTHIER
+
+Pour ouvrir le site :
+
+1. Double-clique sur « ouvrir-le-portfolio.bat ».
+2. Le portfolio s’ouvrira automatiquement dans ton navigateur.
+
+Tu peux également double-cliquer directement sur « index.html ».
+
+Ne déplace pas index.html, style.css ou le dossier media séparément :
+ils doivent rester ensemble pour que les vidéos et les photos apparaissent.
+
+Le site reste entièrement sur ton ordinateur et n’est pas hébergé.
