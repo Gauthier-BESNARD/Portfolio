@@ -727,3 +727,8 @@ footer a {
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
+
+.center {
+    text-align: right;
+}
+  
