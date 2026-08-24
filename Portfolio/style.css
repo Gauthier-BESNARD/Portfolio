@@ -382,6 +382,47 @@ footer a:hover {
   margin: 0;
 }
 
+
+.photo-open {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: zoom-in;
+  font: inherit;
+  text-align: inherit;
+}
+
+.photo-open:focus-visible {
+  outline: 3px solid #4d5b0a;
+  outline-offset: 5px;
+}
+
+.photo-open-label {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: rgba(9, 10, 8, 0.76);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 180ms ease, transform 180ms ease;
+  text-transform: uppercase;
+}
+
+.photo-open:hover .photo-open-label,
+.photo-open:focus-visible .photo-open-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .photo-landscape-row {
   display: contents;
 }
@@ -428,6 +469,65 @@ footer a:hover {
 
 .photo-card figcaption strong {
   font-weight: 500;
+}
+
+
+html.lightbox-open {
+  overflow: hidden;
+}
+
+.photo-lightbox {
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  max-height: none;
+  margin: 0;
+  padding: clamp(18px, 4vw, 54px);
+  border: 0;
+  background: rgba(5, 6, 5, 0.96);
+  color: #fff;
+}
+
+.photo-lightbox[open] {
+  display: grid;
+  place-items: center;
+}
+
+.photo-lightbox::backdrop {
+  background: rgba(5, 6, 5, 0.96);
+}
+
+.photo-lightbox img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: calc(100vh - clamp(36px, 8vw, 108px));
+  object-fit: contain;
+}
+
+.photo-lightbox-close {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  z-index: 2;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  background: rgba(9, 10, 8, 0.72);
+  color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.photo-lightbox-close:hover,
+.photo-lightbox-close:focus-visible {
+  background: #fff;
+  color: #090a08;
 }
 
 .about-section {
@@ -738,7 +838,8 @@ footer a {
     scroll-behavior: auto;
   }
 
-  .photo-card img {
+  .photo-card img,
+  .photo-open-label {
     transition: none;
   }
 }
