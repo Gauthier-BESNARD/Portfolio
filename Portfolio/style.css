@@ -386,6 +386,12 @@ footer a:hover {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 3vw;
   align-items: start;
+  justify-items: center;
+}
+
+.photo-portrait {
+  width: 100%;
+  max-width: 360px;
 }
 
 .photo-card img {
