@@ -903,19 +903,32 @@ footer a {
 }
 
 .reveal-text {
+  --reveal-x: 0px;
+  --reveal-y: 26px;
   opacity: 0;
   filter: blur(7px);
-  transform: translateY(24px);
-  transition: opacity 650ms cubic-bezier(0.2, 0.7, 0, 1),
-    filter 650ms cubic-bezier(0.2, 0.7, 0, 1),
-    transform 650ms cubic-bezier(0.2, 0.7, 0, 1);
+  transform: translate3d(var(--reveal-x), var(--reveal-y), 0);
+  transition: opacity 680ms cubic-bezier(0.2, 0.7, 0, 1),
+    filter 680ms cubic-bezier(0.2, 0.7, 0, 1),
+    transform 680ms cubic-bezier(0.2, 0.7, 0, 1);
   transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, filter, transform;
+}
+
+.reveal-text.reveal-from-left {
+  --reveal-x: -34px;
+  --reveal-y: 8px;
+}
+
+.reveal-text.reveal-from-right {
+  --reveal-x: 34px;
+  --reveal-y: 8px;
 }
 
 .reveal-text.is-visible {
   opacity: 1;
   filter: blur(0);
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
