@@ -229,7 +229,9 @@
 
     <dialog class="photo-lightbox" id="photo-lightbox" aria-label="Photo en plein écran">
       <button class="photo-lightbox-close" type="button" aria-label="Fermer la photo">×</button>
+      <button class="photo-lightbox-nav photo-lightbox-prev" type="button" aria-label="Photo précédente">←</button>
       <img src="" alt="">
+      <button class="photo-lightbox-nav photo-lightbox-next" type="button" aria-label="Photo suivante">→</button>
     </dialog>
 
     <section class="about-section" id="apropos">
@@ -318,25 +320,73 @@
       const lightbox = document.querySelector("#photo-lightbox");
       const lightboxImage = lightbox?.querySelector("img");
       const closeButton = lightbox?.querySelector(".photo-lightbox-close");
+      const previousButton = lightbox?.querySelector(".photo-lightbox-prev");
+      const nextButton = lightbox?.querySelector(".photo-lightbox-next");
+      const photoButtons = [...document.querySelectorAll(".photo-open")];
+      let currentPhoto = 0;
+      let swipeStartX = 0;
+      let navigationLocked = false;
 
-      document.querySelectorAll(".photo-open").forEach((button) => {
+      const updateLightboxImage = () => {
+        const button = photoButtons[currentPhoto];
+        lightboxImage.src = button.dataset.photoSrc || "";
+        lightboxImage.alt = button.dataset.photoAlt || "Photo agrandie";
+      };
+
+      const changePhoto = (step) => {
+        if (!lightbox?.open || navigationLocked || photoButtons.length < 2) return;
+        navigationLocked = true;
+
+        const goingForward = step > 0;
+        lightboxImage.classList.add(goingForward ? "swipe-out-left" : "swipe-out-right");
+
+        window.setTimeout(() => {
+          currentPhoto = (currentPhoto + step + photoButtons.length) % photoButtons.length;
+          updateLightboxImage();
+          lightboxImage.className = goingForward ? "swipe-in-right" : "swipe-in-left";
+
+          window.setTimeout(() => {
+            lightboxImage.className = "";
+            navigationLocked = false;
+          }, 280);
+        }, 180);
+      };
+
+      photoButtons.forEach((button, index) => {
         button.addEventListener("click", () => {
           const source = button.dataset.photoSrc;
-          const description = button.dataset.photoAlt || "Photo agrandie";
 
           if (!lightbox || !lightboxImage || typeof lightbox.showModal !== "function") {
             window.open(source, "_blank", "noopener");
             return;
           }
 
-          lightboxImage.src = source;
-          lightboxImage.alt = description;
+          currentPhoto = index;
+          updateLightboxImage();
           document.documentElement.classList.add("lightbox-open");
           lightbox.showModal();
         });
       });
 
       closeButton?.addEventListener("click", () => lightbox.close());
+      previousButton?.addEventListener("click", () => changePhoto(-1));
+      nextButton?.addEventListener("click", () => changePhoto(1));
+
+      lightboxImage?.addEventListener("pointerdown", (event) => {
+        swipeStartX = event.clientX;
+      });
+
+      lightboxImage?.addEventListener("pointerup", (event) => {
+        const distance = event.clientX - swipeStartX;
+        if (Math.abs(distance) < 45) return;
+        changePhoto(distance < 0 ? 1 : -1);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (!lightbox?.open) return;
+        if (event.key === "ArrowLeft") changePhoto(-1);
+        if (event.key === "ArrowRight") changePhoto(1);
+      });
 
       lightbox?.addEventListener("click", (event) => {
         if (event.target === lightbox) lightbox.close();
@@ -344,6 +394,8 @@
 
       lightbox?.addEventListener("close", () => {
         document.documentElement.classList.remove("lightbox-open");
+        navigationLocked = false;
+        lightboxImage.className = "";
         lightboxImage.removeAttribute("src");
         lightboxImage.alt = "";
       });
