@@ -267,6 +267,36 @@
       updateHeader();
       window.addEventListener("scroll", updateHeader, { passive: true });
 
+      const animatedTexts = document.querySelectorAll([
+        ".hero-copy > *",
+        ".section-heading > *",
+        ".showreel-meta",
+        ".project-meta > *",
+        ".photo-card figcaption",
+        ".about-copy > *",
+        ".about-text > *",
+        "footer > *"
+      ].join(","));
+
+      animatedTexts.forEach((element, index) => {
+        element.classList.add("reveal-text");
+        element.style.setProperty("--reveal-delay", `${(index % 3) * 70}ms`);
+      });
+
+      if ("IntersectionObserver" in window) {
+        const textObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -8%" });
+
+        animatedTexts.forEach((element) => textObserver.observe(element));
+      } else {
+        animatedTexts.forEach((element) => element.classList.add("is-visible"));
+      }
+
       const lightbox = document.querySelector("#photo-lightbox");
       const lightboxImage = lightbox?.querySelector("img");
       const closeButton = lightbox?.querySelector(".photo-lightbox-close");
