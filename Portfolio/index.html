@@ -167,32 +167,62 @@
         <p class="photo-camera">Canon EOS 1100D</p>
       </div>
       <div class="photo-grid">
-        <figure class="photo-card photo-wide">
-          <img src="media/lumiere-doree.webp" alt="Feuilles éclairées par une lumière dorée devant des rochers">
+        <figure class="photo-card">
+          <button class="photo-open" type="button" data-photo-src="media/lumiere-doree.webp"
+            data-photo-alt="Feuilles éclairées par une lumière dorée devant des rochers"
+            aria-label="Afficher la photo 1 en plein écran">
+            <img src="media/lumiere-doree.webp" alt="Feuilles éclairées par une lumière dorée devant des rochers">
+            <span class="photo-open-label" aria-hidden="true">Agrandir</span>
+          </button>
           <figcaption><span>01</span><strong></strong></figcaption>
         </figure>
         <figure class="photo-card">
-          <img src="media/fleurs-nocturnes.webp" alt="Fleurs bleues et blanches dans une ambiance sombre et colorée">
+          <button class="photo-open" type="button" data-photo-src="media/fleurs-nocturnes.webp"
+            data-photo-alt="Fleurs bleues et blanches dans une ambiance sombre et colorée"
+            aria-label="Afficher la photo 2 en plein écran">
+            <img src="media/fleurs-nocturnes.webp" alt="Fleurs bleues et blanches dans une ambiance sombre et colorée">
+            <span class="photo-open-label" aria-hidden="true">Agrandir</span>
+          </button>
           <figcaption><span>02</span><strong></strong></figcaption>
         </figure>
         <figure class="photo-card">
-          <img src="media/eclosion.webp" alt="Fleur blanche au cœur orange sur un fond végétal vert">
+          <button class="photo-open" type="button" data-photo-src="media/eclosion.webp"
+            data-photo-alt="Fleur blanche au cœur orange sur un fond végétal vert"
+            aria-label="Afficher la photo 3 en plein écran">
+            <img src="media/eclosion.webp" alt="Fleur blanche au cœur orange sur un fond végétal vert">
+            <span class="photo-open-label" aria-hidden="true">Agrandir</span>
+          </button>
           <figcaption><span>03</span><strong></strong></figcaption>
         </figure>
         <div class="photo-portrait-row">
           <figure class="photo-card photo-portrait">
-            <img src="media/photo_A.png" alt="Petite cascade éclairée par le soleil entre des rochers"
-              width="2848" height="4272" loading="lazy" decoding="async">
+            <button class="photo-open" type="button" data-photo-src="media/photo_A.png"
+              data-photo-alt="Petite cascade éclairée par le soleil entre des rochers"
+              aria-label="Afficher la photo 4 en plein écran">
+              <img src="media/photo_A.png" alt="Petite cascade éclairée par le soleil entre des rochers"
+                width="2848" height="4272" loading="lazy" decoding="async">
+              <span class="photo-open-label" aria-hidden="true">Agrandir</span>
+            </button>
             <figcaption><span>04</span><strong></strong></figcaption>
           </figure>
           <figure class="photo-card photo-portrait">
-            <img src="media/photo_B.png" alt="Sentier de montagne creusé dans une paroi rocheuse"
-              width="2848" height="4272" loading="lazy" decoding="async">
+            <button class="photo-open" type="button" data-photo-src="media/photo_B.png"
+              data-photo-alt="Sentier de montagne creusé dans une paroi rocheuse"
+              aria-label="Afficher la photo 5 en plein écran">
+              <img src="media/photo_B.png" alt="Sentier de montagne creusé dans une paroi rocheuse"
+                width="2848" height="4272" loading="lazy" decoding="async">
+              <span class="photo-open-label" aria-hidden="true">Agrandir</span>
+            </button>
             <figcaption><span>05</span><strong></strong></figcaption>
           </figure>
         </div>
       </div>
     </section>
+
+    <dialog class="photo-lightbox" id="photo-lightbox" aria-label="Photo en plein écran">
+      <button class="photo-lightbox-close" type="button" aria-label="Fermer la photo">×</button>
+      <img src="" alt="">
+    </dialog>
 
     <section class="about-section" id="apropos">
       <div class="about-copy">
@@ -225,6 +255,36 @@
       <a href="#top">Retour en haut ↑</a>
     </footer>
   </main>
+
+  <script>
+    (() => {
+      const lightbox = document.querySelector("#photo-lightbox");
+      const lightboxImage = lightbox?.querySelector("img");
+      const closeButton = lightbox?.querySelector(".photo-lightbox-close");
+
+      if (!lightbox || !lightboxImage || !closeButton) return;
+
+      const closeLightbox = () => lightbox.close();
+
+      document.querySelectorAll(".photo-open").forEach((button) => {
+        button.addEventListener("click", () => {
+          lightboxImage.src = button.dataset.photoSrc || "";
+          lightboxImage.alt = button.dataset.photoAlt || "";
+          document.documentElement.classList.add("lightbox-open");
+          lightbox.showModal();
+        });
+      });
+
+      closeButton.addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+      lightbox.addEventListener("close", () => {
+        document.documentElement.classList.remove("lightbox-open");
+        lightboxImage.src = "";
+      });
+    })();
+  </script>
 </body>
 
 </html>
