@@ -380,6 +380,14 @@ footer a:hover {
   margin: 0;
 }
 
+.photo-portrait-row {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3vw;
+  align-items: start;
+}
+
 .photo-card img {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -399,6 +407,10 @@ footer a:hover {
 
 .photo-wide img {
   aspect-ratio: 4 / 5;
+}
+
+.photo-portrait img {
+  aspect-ratio: 2 / 3;
 }
 
 .photo-card figcaption {
@@ -677,6 +689,15 @@ footer a {
     aspect-ratio: 4 / 3;
   }
 
+  .photo-portrait-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .photo-portrait img {
+    aspect-ratio: 2 / 3;
+  }
+
   .about-section {
     grid-template-columns: 1fr;
     gap: 42px;
@@ -731,4 +752,3 @@ footer a {
 .center {
     text-align: right;
 }
-  
