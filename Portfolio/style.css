@@ -382,7 +382,6 @@ footer a:hover {
   margin: 0;
 }
 
-
 .photo-open {
   position: relative;
   display: block;
@@ -390,11 +389,12 @@ footer a:hover {
   padding: 0;
   overflow: hidden;
   border: 0;
+  appearance: none;
   background: transparent;
-  color: #fff;
-  cursor: zoom-in;
+  color: inherit;
   font: inherit;
   text-align: inherit;
+  cursor: zoom-in;
 }
 
 .photo-open:focus-visible {
@@ -404,23 +404,27 @@ footer a:hover {
 
 .photo-open-label {
   position: absolute;
-  right: 14px;
-  bottom: 14px;
+  right: 12px;
+  bottom: 12px;
   padding: 8px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
   border-radius: 999px;
   background: rgba(9, 10, 8, 0.76);
-  font-size: 0.64rem;
-  letter-spacing: 0.12em;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 180ms ease, transform 180ms ease;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1;
   text-transform: uppercase;
+  opacity: 0.82;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
 .photo-open:hover .photo-open-label,
 .photo-open:focus-visible .photo-open-label {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(-2px);
 }
 
 .photo-landscape-row {
@@ -471,21 +475,24 @@ footer a:hover {
   font-weight: 500;
 }
 
-
 html.lightbox-open {
   overflow: hidden;
 }
 
 .photo-lightbox {
+  position: fixed;
+  inset: 0;
   width: 100vw;
   max-width: none;
-  height: 100vh;
+  height: 100dvh;
   max-height: none;
   margin: 0;
-  padding: clamp(18px, 4vw, 54px);
+  padding: clamp(24px, 4vw, 64px);
+  overflow: hidden;
   border: 0;
-  background: rgba(5, 6, 5, 0.96);
+  background: rgba(5, 6, 5, 0.97);
   color: #fff;
+  cursor: zoom-out;
 }
 
 .photo-lightbox[open] {
@@ -494,15 +501,18 @@ html.lightbox-open {
 }
 
 .photo-lightbox::backdrop {
-  background: rgba(5, 6, 5, 0.96);
+  background: rgba(0, 0, 0, 0.9);
 }
 
 .photo-lightbox img {
+  display: block;
   width: auto;
-  max-width: 100%;
   height: auto;
-  max-height: calc(100vh - clamp(36px, 8vw, 108px));
+  max-width: min(92vw, 1800px);
+  max-height: 88dvh;
   object-fit: contain;
+  filter: none;
+  cursor: default;
 }
 
 .photo-lightbox-close {
@@ -511,23 +521,23 @@ html.lightbox-open {
   right: 20px;
   z-index: 2;
   display: grid;
-  width: 46px;
-  height: 46px;
-  place-items: center;
+  width: 44px;
+  height: 44px;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.38);
   border-radius: 50%;
   background: rgba(9, 10, 8, 0.72);
   color: #fff;
+  font: 300 1.8rem/1 Arial, sans-serif;
   cursor: pointer;
-  font-size: 2rem;
-  line-height: 1;
+  transition: background 180ms ease, transform 180ms ease;
 }
 
 .photo-lightbox-close:hover,
 .photo-lightbox-close:focus-visible {
-  background: #fff;
-  color: #090a08;
+  background: rgba(255, 255, 255, 0.18);
+  transform: scale(1.05);
 }
 
 .about-section {
@@ -838,8 +848,12 @@ footer a {
     scroll-behavior: auto;
   }
 
-  .photo-card img,
-  .photo-open-label {
+  .photo-card img {
+    transition: none;
+  }
+
+  .photo-open-label,
+  .photo-lightbox-close {
     transition: none;
   }
 }
