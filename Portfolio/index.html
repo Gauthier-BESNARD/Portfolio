@@ -275,6 +275,12 @@
       updateHeader();
       window.addEventListener("scroll", updateHeader, { passive: true });
 
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.body.classList.add("animations-ready");
+        });
+      });
+
       const animatedTexts = document.querySelectorAll([
         ".section-heading > *",
         ".showreel-meta",
