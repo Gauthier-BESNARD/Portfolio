@@ -370,34 +370,43 @@ footer a:hover {
 }
 
 .photo-grid {
+  --photo-gap: clamp(20px, 3vw, 48px);
   display: grid;
-  grid-template-columns: 1.25fr 0.85fr;
-  gap: 3vw;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--photo-gap);
   align-items: start;
 }
 
 .photo-card {
+  min-width: 0;
   margin: 0;
+}
+
+.photo-landscape-row {
+  display: contents;
 }
 
 .photo-portrait-row {
   display: grid;
   grid-column: 1 / -1;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 3vw;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--photo-gap);
   align-items: start;
-  justify-items: center;
 }
 
-.photo-portrait {
-  width: 100%;
-  max-width: 360px;
+.photo-portrait-row .photo-portrait:first-child {
+  grid-column: 2 / span 2;
+}
+
+.photo-portrait-row .photo-portrait:last-child {
+  grid-column: 4 / span 2;
 }
 
 .photo-card img {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  object-fit: contain;
   filter: saturate(0.96);
   transition: filter 350ms ease, transform 550ms cubic-bezier(0.2, 0.7, 0, 1);
 }
@@ -405,18 +414,6 @@ footer a:hover {
 .photo-card:hover img {
   filter: saturate(1.08);
   transform: scale(1.012);
-}
-
-.photo-wide {
-  grid-row: span 2;
-}
-
-.photo-wide img {
-  aspect-ratio: 4 / 5;
-}
-
-.photo-portrait img {
-  aspect-ratio: 2 / 3;
 }
 
 .photo-card figcaption {
@@ -683,25 +680,25 @@ footer a {
   }
 
   .photo-grid {
+    --photo-gap: 20px;
     grid-template-columns: 1fr;
-  }
-
-  .photo-wide {
-    grid-row: auto;
-  }
-
-  .photo-wide img,
-  .photo-card img {
-    aspect-ratio: 4 / 3;
   }
 
   .photo-portrait-row {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: var(--photo-gap);
+    justify-items: center;
   }
 
-  .photo-portrait img {
-    aspect-ratio: 2 / 3;
+  .photo-card {
+    width: 100%;
+    max-width: 480px;
+    justify-self: center;
+  }
+
+  .photo-portrait-row .photo-portrait:first-child,
+  .photo-portrait-row .photo-portrait:last-child {
+    grid-column: auto;
   }
 
   .about-section {
@@ -758,3 +755,4 @@ footer a {
 .center {
     text-align: right;
 }
+  
