@@ -8,6 +8,8 @@
   <meta name="description" content="Portfolio de Gauthier Besnard : motion design, montage vidéo et photographie.">
   <meta name="robots" content="noindex, nofollow">
   <title>Gauthier Besnard — Portfolio audiovisuel</title>
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://i.ytimg.com">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -31,7 +33,8 @@
         <a class="scroll-link" href="#projets">Découvrir mes projets <span aria-hidden="true">↓</span></a>
       </div>
       <figure class="hero-visual">
-        <img src="media/lumiere-doree.webp" alt="Feuilles baignées de lumière dorée">
+        <img src="media/lumiere-doree.webp" alt="Feuilles baignées de lumière dorée"
+          fetchpriority="high" decoding="async">
 
       </figure>
 
@@ -47,7 +50,7 @@
       <div class="projects-grid">
         <article class="project-card showreel-card">
           <div class="video-shell">
-            <iframe src="https://www.youtube.com/embed/F-gGC3eZgpQ" title="Showreel"
+            <iframe loading="lazy" src="https://www.youtube.com/embed/F-gGC3eZgpQ" title="Showreel"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
               style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
@@ -59,7 +62,7 @@
 
         <article class="project-card">
           <div class="video-shell">
-            <iframe src="https://www.youtube.com/embed/zZjVs7p20ks" title="No. 1 Party Anthem"
+            <iframe loading="lazy" src="https://www.youtube.com/embed/zZjVs7p20ks" title="No. 1 Party Anthem"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
               style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
@@ -82,7 +85,7 @@
 
         <article class="project-card">
           <div class="video-shell">
-            <iframe src="https://www.youtube.com/embed/LUo1jVQmPzw" title="EUSEXUA"
+            <iframe loading="lazy" src="https://www.youtube.com/embed/LUo1jVQmPzw" title="EUSEXUA"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
               style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
@@ -102,7 +105,7 @@
 
         <article class="project-card">
           <div class="video-shell">
-            <iframe src="https://www.youtube.com/embed/WZbWcxOO-vs" title="EPHEMERAL"
+            <iframe loading="lazy" src="https://www.youtube.com/embed/WZbWcxOO-vs" title="EPHEMERAL"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
               style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
@@ -122,7 +125,7 @@
 
         <article class="project-card">
           <div class="video-shell">
-            <iframe src="https://www.youtube.com/embed/NfOwQNqsGsw" title="Night Like This"
+            <iframe loading="lazy" src="https://www.youtube.com/embed/NfOwQNqsGsw" title="Night Like This"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
               style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
@@ -141,7 +144,7 @@
 
         <article class="project-card">
           <div class="video-shell">
-            <iframe src="https://www.youtube.com/embed/jHOY80buOuI" title="Softcore"
+            <iframe loading="lazy" src="https://www.youtube.com/embed/jHOY80buOuI" title="Softcore"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
               style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
@@ -172,7 +175,8 @@
             <button class="photo-open" type="button" data-photo-src="media/lumiere-doree.webp"
               data-photo-alt="Feuilles éclairées par une lumière dorée devant des rochers"
               aria-label="Agrandir la photo 01">
-              <img src="media/lumiere-doree.webp" alt="Feuilles éclairées par une lumière dorée devant des rochers">
+              <img src="media/lumiere-doree.webp" alt="Feuilles éclairées par une lumière dorée devant des rochers"
+                loading="lazy" decoding="async">
               <span class="photo-open-label" aria-hidden="true">Agrandir</span>
             </button>
             <figcaption><span>01</span><strong></strong></figcaption>
@@ -181,7 +185,8 @@
             <button class="photo-open" type="button" data-photo-src="media/fleurs-nocturnes.webp"
               data-photo-alt="Fleurs bleues et blanches dans une ambiance sombre et colorée"
               aria-label="Agrandir la photo 02">
-              <img src="media/fleurs-nocturnes.webp" alt="Fleurs bleues et blanches dans une ambiance sombre et colorée">
+              <img src="media/fleurs-nocturnes.webp" alt="Fleurs bleues et blanches dans une ambiance sombre et colorée"
+                loading="lazy" decoding="async">
               <span class="photo-open-label" aria-hidden="true">Agrandir</span>
             </button>
             <figcaption><span>02</span><strong></strong></figcaption>
@@ -190,7 +195,8 @@
             <button class="photo-open" type="button" data-photo-src="media/eclosion.webp"
               data-photo-alt="Fleur blanche au cœur orange sur un fond végétal vert"
               aria-label="Agrandir la photo 03">
-              <img src="media/eclosion.webp" alt="Fleur blanche au cœur orange sur un fond végétal vert">
+              <img src="media/eclosion.webp" alt="Fleur blanche au cœur orange sur un fond végétal vert"
+                loading="lazy" decoding="async">
               <span class="photo-open-label" aria-hidden="true">Agrandir</span>
             </button>
             <figcaption><span>03</span><strong></strong></figcaption>
@@ -233,11 +239,13 @@
       <div class="about-visuals" aria-label="Portrait de Gauthier Besnard et autoportrait avec un appareil photo">
         <figure class="about-portrait">
           <img src="media/gauthier-besnard-portrait.jpg"
-            alt="Portrait de Gauthier Besnard portant une chemise blanche et des lunettes">
+            alt="Portrait de Gauthier Besnard portant une chemise blanche et des lunettes"
+            loading="lazy" decoding="async">
         </figure>
         <figure class="about-camera">
           <img src="media/gauthier-besnard-camera.jpg"
-            alt="Autoportrait de Gauthier Besnard tenant un appareil photo Canon">
+            alt="Autoportrait de Gauthier Besnard tenant un appareil photo Canon"
+            loading="lazy" decoding="async">
         </figure>
       </div>
       <div class="about-text">
@@ -268,7 +276,6 @@
       window.addEventListener("scroll", updateHeader, { passive: true });
 
       const animatedTexts = document.querySelectorAll([
-        ".hero-copy > *",
         ".section-heading > *",
         ".showreel-meta",
         ".project-meta > *",
@@ -294,7 +301,11 @@
           });
         }, { threshold: 0.12, rootMargin: "0px 0px -8%" });
 
-        animatedTexts.forEach((element) => textObserver.observe(element));
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            animatedTexts.forEach((element) => textObserver.observe(element));
+          });
+        });
       } else {
         animatedTexts.forEach((element) => element.classList.add("is-visible"));
       }
