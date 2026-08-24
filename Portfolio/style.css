@@ -156,6 +156,12 @@ footer a:hover {
 .hero-copy > .hero-intro,
 .hero-copy > .scroll-link {
   opacity: 0;
+}
+
+.animations-ready .hero-copy > .eyebrow,
+.animations-ready .hero-copy > h1,
+.animations-ready .hero-copy > .hero-intro,
+.animations-ready .hero-copy > .scroll-link {
   animation: hero-text-in 780ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -925,8 +931,7 @@ footer a {
   .hero-copy > h1,
   .hero-copy > .hero-intro,
   .hero-copy > .scroll-link {
-    opacity: 1;
-    animation: none;
+    animation-duration: 420ms;
   }
 }
 
@@ -974,10 +979,8 @@ footer a {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal-text {
-    opacity: 1;
     filter: none;
-    transform: none;
-    transition: none;
+    transition-duration: 320ms;
   }
 }
   
