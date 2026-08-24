@@ -280,7 +280,9 @@
 
       animatedTexts.forEach((element, index) => {
         element.classList.add("reveal-text");
-        element.style.setProperty("--reveal-delay", `${(index % 3) * 70}ms`);
+        if (index % 3 === 0) element.classList.add("reveal-from-left");
+        if (index % 3 === 1) element.classList.add("reveal-from-right");
+        element.style.setProperty("--reveal-delay", `${(index % 3) * 75}ms`);
       });
 
       if ("IntersectionObserver" in window) {
