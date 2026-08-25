@@ -323,6 +323,15 @@ footer a:hover {
   border-top: 1px solid var(--line);
 }
 
+.showreel-skills {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.6;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
 .project-card.showreel-card h3 {
   margin: 7px 0 0;
   font-family: Georgia, "Times New Roman", serif;
