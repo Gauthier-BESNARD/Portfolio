@@ -955,6 +955,10 @@ footer a {
     grid-column: auto;
   }
 
+  .showreel-meta {
+    text-align: center;
+  }
+
   .project-meta {
     grid-template-columns: 40px 1fr;
   }
