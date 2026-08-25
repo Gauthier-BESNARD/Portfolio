@@ -1,6 +1,6 @@
 @import url("base.css");
 
-/* Grain fourni par Gauthier : utilisé directement comme fond. */
+/* Grains fournis par Gauthier, convertis pour le web sans génération. */
 body::before {
   display: none;
 }
@@ -11,8 +11,10 @@ body,
 .about-section,
 footer,
 .photo-lightbox {
-  background-image: url("media/grain-dark.png");
-  background-repeat: repeat;
+  background-image: url("media/grain-dark.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 body,
@@ -35,6 +37,8 @@ footer {
 
 .photo-section {
   background-color: var(--paper);
-  background-image: url("media/grain-light.png");
-  background-repeat: repeat;
+  background-image: url("media/grain-light.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
