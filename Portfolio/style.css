@@ -872,12 +872,30 @@ footer a {
   }
 
   footer {
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  footer > p:first-child {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+
+  footer > p:nth-child(2) {
+    grid-column: 1;
+    justify-self: start;
+    text-align: left;
   }
 
   footer .center {
-    grid-column: 1 / -1;
+    grid-column: 2;
+    justify-self: end;
     text-align: right;
+  }
+
+  footer .back-to-top {
+    grid-column: 1 / -1;
+    justify-self: center;
+    text-align: center;
   }
 }
 
@@ -900,8 +918,10 @@ footer a {
   }
 
   .hero-copy {
+    align-items: center;
     padding-right: 20px;
     padding-left: 20px;
+    text-align: center;
   }
 
   .hero h1 {
@@ -1011,21 +1031,20 @@ footer a {
   }
 
   footer {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px 10px;
     padding: 28px 20px;
-    font-size: 0.62rem;
-    letter-spacing: 0.07em;
+    font-size: clamp(0.54rem, 2.5vw, 0.62rem);
+    letter-spacing: 0.05em;
   }
 
-  footer p:nth-child(2),
+  footer > p:nth-child(2),
   footer .center {
-    grid-column: auto;
-    text-align: left;
+    white-space: nowrap;
   }
 
-  footer a {
-    justify-self: start;
+  footer > .back-to-top {
+    justify-self: center;
   }
 }
 
